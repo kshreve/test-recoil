@@ -1,5 +1,5 @@
 import { selector } from 'recoil'
-import textState from 'appState/textState'
+import textState from 'appState/intro/textState'
 
 const charCountState = selector({
   key: 'charCountState', // unique ID (with respect to other atoms/selectors)

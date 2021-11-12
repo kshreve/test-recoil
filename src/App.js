@@ -1,14 +1,14 @@
 import React from 'react';
 import { RecoilRoot } from 'recoil';
 
-import CharacterCounter from 'components/CharacterCounter'
+import TutorialSwitcher from 'components/TutorialSwitcher'
 
-function Container() {
+const App = () => {
   return (
     <RecoilRoot>
-      <CharacterCounter/>
+      <TutorialSwitcher/>
     </RecoilRoot>
   );
 }
 
-export default Container;
+export default App;
