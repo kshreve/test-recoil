@@ -1,6 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 
+import React from 'react';
+import { RecoilRoot } from 'recoil';
+
 function App() {
   return (
     <div className="App">
@@ -22,4 +25,12 @@ function App() {
   );
 }
 
-export default App;
+function Container() {
+  return (
+    <RecoilRoot>
+      <App />
+    </RecoilRoot>
+  );
+}
+
+export default Container;
