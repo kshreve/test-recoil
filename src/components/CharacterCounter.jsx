@@ -1,5 +1,5 @@
-import TextInput from './TextInput'
-import CharacterCount from './CharacterCount'
+import TextInput from 'components/TextInput'
+import CharacterCount from 'components/CharacterCount'
 
 function CharacterCounter() {
   return (
