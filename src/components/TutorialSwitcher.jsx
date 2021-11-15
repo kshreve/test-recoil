@@ -22,10 +22,11 @@ const TutorialSwitcher = () => {
         <select
           name="pageState"
           id="pageState"
+          defaultValue={pageState}
           onChange={(event) => setPageState(event.target.value)}
         >
           {tutorials.map((tut, index) => (
-            <option key={index} value={index} selected={index === pageState}>
+            <option key={index} value={index}>
               {index + 1}
             </option>
           ))}
