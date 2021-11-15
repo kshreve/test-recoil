@@ -4,9 +4,15 @@ import tutorialState from 'appState/tutorialState';
 import CharacterCounter from 'components/intro/CharacterCounter';
 import TodoList from 'components/todo-list/TodoList';
 import CurrentUserInfo from 'components/async-data/CurrentUserInfo';
+import FriendsCurrentUserInfo from 'components/friends/FriendsCurrentUserInfo';
 
 const TutorialSwitcher = () => {
-  const tutorials = [<CharacterCounter />, <TodoList />, <CurrentUserInfo />];
+  const tutorials = [
+    <CharacterCounter />,
+    <TodoList />,
+    <CurrentUserInfo />,
+    <FriendsCurrentUserInfo />,
+  ];
 
   const [pageState, setPageState] = useRecoilState(tutorialState);
 
