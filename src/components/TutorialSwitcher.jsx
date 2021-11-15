@@ -36,13 +36,13 @@ const TutorialSwitcher = () => {
 
       {tutorials
         .map((tutorial, index) => (
-          <>
+          <div key={index}>
             <h2>Tutorial {index + 1}</h2>
             {tutorial}
 
             <br />
             <hr />
-          </>
+          </div>
         ))
         .reverse()}
     </>
