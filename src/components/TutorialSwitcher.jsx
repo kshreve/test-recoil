@@ -5,10 +5,10 @@ import CharacterCounter from 'components/intro/CharacterCounter'
 import TodoList from 'components/todo-list/TodoList'
 
 
-function TutorialSwitcher() {
+const TutorialSwitcher = () => {
   const tutorials = [<CharacterCounter />,  <TodoList />]
 
-  const [pageState, setPageState] = useRecoilState(tutorialState);
+  const [pageState] = useRecoilState(tutorialState);
 
   return (
     <div>
