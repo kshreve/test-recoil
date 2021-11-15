@@ -1,7 +1,7 @@
 import { atom, selectorFamily, selector, waitForNone } from 'recoil';
 
 export const currentUserIDState = atom({
-  key: 'CurrentUserID',
+  key: 'CurrentUserID2',
   default: 1,
 });
 
@@ -20,7 +20,7 @@ const myDBQuery = async ({ userId }) => {
 };
 
 const userInfoQuery = selectorFamily({
-  key: 'UserInfoQuery',
+  key: 'UserInfoQuery2',
   get: (userId) => async () => {
     console.log(userId);
     const response = await myDBQuery({ userId });
@@ -34,12 +34,12 @@ const userInfoQuery = selectorFamily({
 });
 
 export const currentUserInfoQuery = selector({
-  key: 'CurrentUserInfoQuery',
+  key: 'CurrentUserInfoQuery2',
   get: ({ get }) => get(userInfoQuery(get(currentUserIDState))),
 });
 
 export const friendsInfoQuery = selector({
-  key: 'FriendsInfoQuery',
+  key: 'FriendsInfoQuery2',
   get: ({ get }) => {
     const { friendList } = get(currentUserInfoQuery);
 
