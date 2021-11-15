@@ -13,3 +13,19 @@ export const currentUserNameState = selector({
     return tableOfUsers[get(currentUserIDState)].name;
   },
 });
+
+const fakeDelay = () => new Promise((resolve) => setTimeout(resolve, 5000));
+
+const getUserNameDelayed = async ({ userId }) => {
+  await fakeDelay();
+
+  return tableOfUsers[userId].name;
+};
+
+export const currentUserNameQuery = selector({
+  key: 'currentUserNameQuery',
+  get: async ({ get }) =>
+    getUserNameDelayed({
+      userId: get(currentUserIDState),
+    }),
+});

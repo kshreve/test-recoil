@@ -1,11 +1,18 @@
+import { Suspense } from 'react';
 import { useRecoilValue } from 'recoil';
 
-import { currentUserNameState } from 'appState/async-data/userState';
+import { currentUserNameQuery } from 'appState/async-data/userState';
 
 function CurrentUserInfo() {
-  const userName = useRecoilValue(currentUserNameState);
+  const userName = useRecoilValue(currentUserNameQuery);
 
-  return <div>{userName}</div>;
+  return (
+    <Suspense fallback={<div>Loading Current User Info...</div>}>
+      <div>
+        <div>{userName}</div>
+      </div>
+    </Suspense>
+  );
 }
 
 export default CurrentUserInfo;

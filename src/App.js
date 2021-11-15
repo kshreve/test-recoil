@@ -5,7 +5,9 @@ import TutorialSwitcher from 'components/TutorialSwitcher';
 
 const App = () => (
   <RecoilRoot>
-    <TutorialSwitcher />
+    <React.Suspense fallback={<div>Loading App...</div>}>
+      <TutorialSwitcher />
+    </React.Suspense>
   </RecoilRoot>
 );
 
