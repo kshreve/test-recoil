@@ -1,4 +1,4 @@
-import { atom, selectorFamily, selector } from 'recoil';
+import { atom, selectorFamily, selector, waitForNone } from 'recoil';
 
 export const currentUserIDState = atom({
   key: 'CurrentUserID',
@@ -11,7 +11,7 @@ const tableOfUsers = [
   { id: 3, name: 'Madison', friendList: [1, 2] },
 ];
 
-const fakeDelay = () => new Promise((resolve) => setTimeout(resolve, 1000));
+const fakeDelay = () => new Promise((resolve) => setTimeout(resolve, 5000));
 
 const myDBQuery = async ({ userId }) => {
   await fakeDelay();
@@ -43,6 +43,10 @@ export const friendsInfoQuery = selector({
   get: ({ get }) => {
     const { friendList } = get(currentUserInfoQuery);
 
-    return friendList.map((friendID) => get(userInfoQuery(friendID)));
+    const friendLoadables = get(waitForNone(friendList.map((friendID) => userInfoQuery(friendID))));
+
+    return friendLoadables
+      .filter(({ state }) => state === 'hasValue')
+      .map(({ contents }) => contents);
   },
 });
