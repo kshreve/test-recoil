@@ -14,7 +14,10 @@ function FriendsCurrentUserInfo() {
 
   return (
     <div>
-      <h1>{currentUser.name}</h1>
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        Friends List of: <h3>{currentUser.name}</h3>
+      </div>
+
       <ul>
         {friends.map((friend) => (
           <li key={friend.id} onClick={() => setCurrentUserID(friend.id)}>
@@ -28,7 +31,7 @@ function FriendsCurrentUserInfo() {
 
 const Wrapper = () => (
   <>
-    <Suspense fallback={<div>Loading Current User Info...</div>}>
+    <Suspense fallback={<div>Loading Friends tutorial...</div>}>
       <FriendsCurrentUserInfo />
     </Suspense>
   </>
