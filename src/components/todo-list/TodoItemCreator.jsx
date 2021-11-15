@@ -1,8 +1,7 @@
-import { useState } from 'react'
-import { useSetRecoilState } from 'recoil'
+import { useState } from 'react';
+import { useSetRecoilState } from 'recoil';
 
-import todoListState from 'appState/todo-list/todoListState'
-
+import todoListState from 'appState/todo-list/todoListState';
 
 function TodoItemCreator() {
   const [inputValue, setInputValue] = useState('');
@@ -20,7 +19,7 @@ function TodoItemCreator() {
     setInputValue('');
   };
 
-  const onChange = ({target: {value}}) => {
+  const onChange = ({ target: { value } }) => {
     setInputValue(value);
   };
 
@@ -37,6 +36,5 @@ let id = 0;
 function getId() {
   return id++;
 }
-
 
 export default TodoItemCreator;

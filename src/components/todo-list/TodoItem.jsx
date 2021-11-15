@@ -1,6 +1,6 @@
-import { useRecoilState } from 'recoil'
+import { useRecoilState } from 'recoil';
 
-import todoListState from 'appState/todo-list/todoListState'
+import todoListState from 'appState/todo-list/todoListState';
 
 function replaceItemAtIndex(arr, index, newValue) {
   return [...arr.slice(0, index), newValue, ...arr.slice(index + 1)];
@@ -10,11 +10,11 @@ function removeItemAtIndex(arr, index) {
   return [...arr.slice(0, index), ...arr.slice(index + 1)];
 }
 
-function TodoItem({item}) {
+function TodoItem({ item }) {
   const [todoList, setTodoList] = useRecoilState(todoListState);
   const index = todoList.findIndex((listItem) => listItem === item);
 
-  const editItemText = ({target: {value}}) => {
+  const editItemText = ({ target: { value } }) => {
     const newList = replaceItemAtIndex(todoList, index, {
       ...item,
       text: value,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
 
-import textState from 'appState/intro/textState'
+import textState from 'appState/intro/textState';
 
 const TextInput = () => {
   const [text, setText] = useRecoilState(textState);
@@ -17,6 +17,6 @@ const TextInput = () => {
       Echo: {text}
     </div>
   );
-}
+};
 
 export default TextInput;
