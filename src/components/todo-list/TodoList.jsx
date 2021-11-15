@@ -1,21 +1,23 @@
 import { useRecoilValue } from 'recoil';
 
-import todoListState from 'appState/todo-list/todoListState';
+import { filteredTodoListState } from 'appState/todo-list/todoListState';
 import TodoItem from 'components/todo-list/TodoItem';
 import TodoItemCreator from 'components/todo-list/TodoItemCreator';
+import TodoListFilters from 'components/todo-list/TodoListFilters';
+import TodoListStats from 'components/todo-list/TodoListStats';
 
 function TodoList() {
-  const todoList = useRecoilValue(todoListState);
+  const todoList = useRecoilValue(filteredTodoListState);
 
   return (
     <>
-      {/* <TodoListStats /> */}
-      {/* <TodoListFilters /> */}
+      <TodoListStats />
+      <TodoListFilters />
       <TodoItemCreator />
 
-      {todoList.map((todoItem) => (
-        <TodoItem key={todoItem.id} item={todoItem} />
-      ))}
+      {todoList.length
+        ? todoList.map((todoItem) => <TodoItem key={todoItem.id} item={todoItem} />)
+        : 'Nothing in the list'}
     </>
   );
 }

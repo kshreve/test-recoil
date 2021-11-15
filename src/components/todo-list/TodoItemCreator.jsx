@@ -1,6 +1,6 @@
 import { useSetRecoilState } from 'recoil';
 
-import todoListState from 'appState/todo-list/todoListState';
+import { todoListState } from 'appState/todo-list/todoListState';
 
 // utility for creating unique Id
 let id = 0;
@@ -24,7 +24,7 @@ function TodoItemCreator() {
 
   return (
     <div>
-      <button onClick={addItem}>Add</button>
+      <button onClick={addItem}>Add New Todo</button>
     </div>
   );
 }

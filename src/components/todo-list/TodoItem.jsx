@@ -1,6 +1,6 @@
 import { useRecoilState } from 'recoil';
 
-import todoListState from 'appState/todo-list/todoListState';
+import { todoListState } from 'appState/todo-list/todoListState';
 
 function replaceItemAtIndex(arr, index, newValue) {
   return [...arr.slice(0, index), newValue, ...arr.slice(index + 1)];

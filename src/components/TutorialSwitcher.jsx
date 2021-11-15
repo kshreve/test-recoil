@@ -14,8 +14,9 @@ const TutorialSwitcher = () => {
       <h2>Current Tutorial Page {Number(pageState) + 1}</h2>
       <div>{tutorials[pageState]}</div>
 
+      <br />
       <div>
-        <br />
+        <hr />
         <label htmlFor="pageState">Choose a Tutorial:</label>
         <select
           name="pageState"
@@ -28,10 +29,8 @@ const TutorialSwitcher = () => {
             </option>
           ))}
         </select>
+        <hr />
       </div>
-
-      <br />
-      <hr />
       <br />
 
       {tutorials
