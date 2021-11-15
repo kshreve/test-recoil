@@ -7,12 +7,16 @@ function CurrentUserInfo() {
   const userName = useRecoilValue(currentUserNameQuery);
 
   return (
-    <Suspense fallback={<div>Loading Current User Info...</div>}>
-      <div>
-        <div>{userName}</div>
-      </div>
-    </Suspense>
+    <div>
+      <div>{userName}</div>
+    </div>
   );
 }
 
-export default CurrentUserInfo;
+const Wrapper = () => (
+  <Suspense fallback={<div>Loading Current User Info...</div>}>
+    <CurrentUserInfo />
+  </Suspense>
+);
+
+export default Wrapper;
