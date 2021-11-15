@@ -3,9 +3,10 @@ import { useRecoilState } from 'recoil';
 import tutorialState from 'appState/tutorialState';
 import CharacterCounter from 'components/intro/CharacterCounter';
 import TodoList from 'components/todo-list/TodoList';
+import CurrentUserInfo from 'components/async-data/CurrentUserInfo';
 
 const TutorialSwitcher = () => {
-  const tutorials = [<CharacterCounter />, <TodoList />];
+  const tutorials = [<CharacterCounter />, <TodoList />, <CurrentUserInfo />];
 
   const [pageState, setPageState] = useRecoilState(tutorialState);
 
@@ -24,7 +25,7 @@ const TutorialSwitcher = () => {
           onChange={(event) => setPageState(event.target.value)}
         >
           {tutorials.map((tut, index) => (
-            <option key={index} value={index}>
+            <option key={index} value={index} selected={index === pageState}>
               {index + 1}
             </option>
           ))}
