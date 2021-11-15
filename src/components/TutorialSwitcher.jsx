@@ -9,7 +9,27 @@ const TutorialSwitcher = () => {
 
   const [pageState] = useRecoilState(tutorialState);
 
-  return <div>{tutorials[pageState]}</div>;
+  return (
+    <>
+      <h2>Current Tutorial Page {pageState + 1}</h2>
+      <div>{tutorials[pageState]}</div>
+      <br />
+      <hr />
+      <br />
+
+      {tutorials
+        .map((tutorial, index) => (
+          <>
+            <h2>Tutorial {index + 1}</h2>
+            {tutorial}
+
+            <br />
+            <hr />
+          </>
+        ))
+        .reverse()}
+    </>
+  );
 };
 
 export default TutorialSwitcher;
