@@ -1,6 +1,6 @@
-import { atom, selector } from 'recoil';
+import { atom, selector, selectorFamily } from 'recoil';
 
-const tableOfUsers = [{ name: 'kevin' }, { name: 'wesley' }];
+const tableOfUsers = [{ name: 'Kevin' }, { name: 'Wesley' }, { name: 'Madison' }];
 
 export const currentUserIDState = atom({
   key: 'CurrentUserID',
@@ -14,18 +14,34 @@ export const currentUserNameState = selector({
   },
 });
 
-const fakeDelay = () => new Promise((resolve) => setTimeout(resolve, 5000));
+const fakeDelay = () => new Promise((resolve) => setTimeout(resolve, 2500));
 
-const getUserNameDelayed = async ({ userId }) => {
+const getUserDelayed = async ({ userId }) => {
   await fakeDelay();
 
-  return tableOfUsers[userId].name;
+  return tableOfUsers[userId];
 };
 
 export const currentUserNameQuery = selector({
   key: 'currentUserNameQuery',
-  get: async ({ get }) =>
-    getUserNameDelayed({
+  get: async ({ get }) => {
+    const l = await getUserDelayed({
       userId: get(currentUserIDState),
-    }),
+    });
+
+    return l.name;
+  },
+});
+
+export const userNameQuery = selectorFamily({
+  key: 'UserName',
+  get: (userId) => async () => {
+    const response = await getUserDelayed({ userId });
+
+    if (response.error) {
+      throw response.error;
+    }
+
+    return response.name;
+  },
 });

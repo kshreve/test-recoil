@@ -1,10 +1,10 @@
 import { Suspense } from 'react';
 import { useRecoilValue } from 'recoil';
 
-import { currentUserNameQuery } from 'appState/async-data/userState';
+import { userNameQuery } from 'appState/async-data/userState';
 
-function CurrentUserInfo() {
-  const userName = useRecoilValue(currentUserNameQuery);
+function CurrentUserInfo({ userId }) {
+  const userName = useRecoilValue(userNameQuery(userId));
 
   return (
     <div>
@@ -14,9 +14,14 @@ function CurrentUserInfo() {
 }
 
 const Wrapper = () => (
-  <Suspense fallback={<div>Loading Current User Info...</div>}>
-    <CurrentUserInfo />
-  </Suspense>
+  <>
+    <Suspense fallback={<div>Loading Current User Info...</div>}>
+      <CurrentUserInfo userId={1} />
+    </Suspense>
+    <Suspense fallback={<div>Loading Current User Info...</div>}>
+      <CurrentUserInfo userId={2} />
+    </Suspense>
+  </>
 );
 
 export default Wrapper;
